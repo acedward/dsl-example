@@ -37,28 +37,22 @@ def isMagical(number):
 import random
 
 def main():
-    # Generate a poem with numbers
-    numbers = [random.randint(1, 100) for _ in range(10)]  # Generate 10 random numbers
-    poem = " ".join(map(str, numbers))  # Create a poem-like string using the numbers
+    # Generate a poem with numbers only
+    numbers = [random.randint(0, 100) for _ in range(10)]  # 10 random numbers
+    poem = ' '.join(map(str, numbers))  # Create a poem by joining numbers as strings
 
-    # Print the generated poem
-    print("Generated Poem of Numbers:")
+    print("Generated Poem (numbers only):")
     print(poem)
 
-    # Check which numbers are magical
-    magical_results = []
+    # Check for magical numbers
+    magical_numbers = []
     for number in numbers:
         result = isMagical(number)
-        magical_results.append({
-            'number': number,
-            'isMagical': result['isMagical'],
-            'message': result['message']
-        })
+        if result.get('isMagical'):
+            magical_numbers.append(number)
 
-    # Print the magical results
-    print("\nMagical Numbers:")
-    for entry in magical_results:
-        print(f"Number: {entry['number']}, Is Magical: {entry['isMagical']}, Message: {entry['message']}")
+    print("Magical Numbers:")
+    print(magical_numbers)
 
 if __name__ == "__main__":
     main()
